@@ -33,4 +33,3 @@
     "sass": "^1.81.0"
   }
 }
-/*"watch:browser-npmsync": "browser-sync start --server --files \"css/*.css\"\"*.html\""*/
