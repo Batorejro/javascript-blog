@@ -64,15 +64,21 @@ body {
   font-weight: 400;
   font-size: 104px;
   line-height: 1;
-  color: black;
+  color: green;
+  animation: blinker 2s cubic-bezier(.1, 0, 1, 1) infinite alternate;
   text-align: center;
   background: url("https://media.istockphoto.com/id/598248114/pl/zdj%C4%99cie/przyjaciele-szcz%C4%99%C5%9Bcie-si%C4%99-sala-jadalna-jedzenie-koncepcja.jpg?s=1024x1024&w=is&k=20&c=wOLPY-dwxqTqCStvma2bIdkau8npf27Og9FuYjft1ek=")
+}
+
+@keyframes blinker {
+  1% {
+    opacity: 0;
+  }
 }
 
 .logo::after {
 
   opacity: 30%;
-
 }
 
 /* Lists */
