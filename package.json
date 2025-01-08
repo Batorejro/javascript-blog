@@ -10,6 +10,7 @@
     "init: gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
     "test:html": "html-validate *.html",
     "test:js": "eslint js/",
+    "test:scss": "stylelint sass/",
     "test": "npm-run-all test:*",
     "build": "npm run test:html",
     "build: sass": "sass --style=compressed --no source-map sass:css",
