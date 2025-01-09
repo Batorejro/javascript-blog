@@ -28,7 +28,7 @@ function titleClickHandler(event) {
 
   /* find the correct article using the selector (value of 'href' attribute) */
   const selectedArticle = document.querySelector(href);
-  console.log(selectedArticle)
+  console.log(selectedArticle);
 
   /* add class 'active' to the correct article */
   selectedArticle.classList.add('active');
@@ -41,8 +41,8 @@ for (let link of links) {
 }
 ////////////////////////////////////////////////////////////////
 
-
-
+// ta funkcję trzeba naprawić;(( - bo nie chce działać
+/*
 
 function tagClickHandler(event) {
   const tagClicked = this;
@@ -57,21 +57,14 @@ function tagClickHandler(event) {
 
   tagClicked.classList.add('active');
 
-  /* [DONE] remove class 'active' from all articles */
-
   const activeTags = document.querySelectorAll('.post.active');
   for (let activeLiTag of activeTags) {
     activeTags.classList.remove('active');
   }
-
-  /* get 'href' attribute from the clicked link */
   const hreft = tagClicked.getAttribute('href');
-
-  /* find the correct article using the selector (value of 'href' attribute) */
   const selectedTag = document.querySelector(hreft);
   console.log(selectedTag)
 
-  /* add class 'active' to the correct article */
   selectedTag.classList.add('active');
 }
 
@@ -80,3 +73,54 @@ const linksTag = document.querySelectorAll('.tags a');
 for (let link of linksTag) {
   link.addEventListener('click', tagClickHandler);
 }
+*/
+
+//usuwanie zawartości listy linków
+
+//optTitleSelector = '.post-title',
+
+
+
+const optTitleSelector = '.post-title';
+let optTitleListSelector = '.titles';
+const articles = document.querySelectorAll(optArticleSelector);
+
+/* remove contents of titleList */
+
+function generateTitleLinks() {
+  const titleList = document.querySelector(optTitleListSelector);
+  clearMessages();
+  /* generate links */
+  const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+  //const html = generateTitleLinksHTML();
+  /* insert links into titleList */
+  titleList.innerHTML = titleList.innerHTML + linkHTML;
+}
+
+
+function clearMessages() {
+  document.getElementById('messages').innerHTML = '';
+  document.getElementById('messages').classList.remove('messages');
+
+
+}
+/* for each article */
+const optArticleSelector = document.querySelectorAll('.post.active');
+for (let optArticleSelector of optTitleSelector) {
+  optArticleSelector.classList.remove('messages');
+  let html = '';
+
+  /* get the article id */
+  for (let article of articles) {
+    const articleId = article.getAttribute('id');
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    html += '<li><a href="#' + articleId + '">' + articleTitle + '</a></li>';
+  }
+  console.log(html);
+}
+
+generateTitleLinks();
+
+
+
+
