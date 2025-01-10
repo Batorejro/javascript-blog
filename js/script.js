@@ -1,6 +1,8 @@
 'use strict';
 
-function titleClickHandler(event) {
+
+function titleClickHandler() {
+  //event.preventDefault();
   const clickedElement = this;
   console.log('Link was clicked!');
 
@@ -40,40 +42,39 @@ for (let link of links) {
   link.addEventListener('click', titleClickHandler);
 }
 ////////////////////////////////////////////////////////////////
-
 // ta funkcję trzeba naprawić;(( - bo nie chce działać
 /*
 
-function tagClickHandler(event) {
-  const tagClicked = this;
-  console.log("Tag Clicked: " + tagClicked)
+  function tagClickHandler(event) {
+    const tagClicked = this;
+    console.log("Tag Clicked: " + tagClicked)
 
 
-  const actLinks = document.querySelectorAll('.tags a');
+    const actLinks = document.querySelectorAll('.tags a');
 
-  for (let link of actLinks) {
-    console.log(link);
+    for (let link of actLinks) {
+      console.log(link);
+    }
+
+    tagClicked.classList.add('active');
+
+    const activeTags = document.querySelectorAll('.post.active');
+    for (let activeLiTag of activeTags) {
+      activeTags.classList.remove('active');
+    }
+    const hreft = tagClicked.getAttribute('href');
+    const selectedTag = document.querySelector(hreft);
+    console.log(selectedTag)
+
+    selectedTag.classList.add('active');
   }
 
-  tagClicked.classList.add('active');
+  const linksTag = document.querySelectorAll('.tags a');
 
-  const activeTags = document.querySelectorAll('.post.active');
-  for (let activeLiTag of activeTags) {
-    activeTags.classList.remove('active');
+  for (let link of linksTag) {
+    link.addEventListener('click', tagClickHandler);
   }
-  const hreft = tagClicked.getAttribute('href');
-  const selectedTag = document.querySelector(hreft);
-  console.log(selectedTag)
-
-  selectedTag.classList.add('active');
-}
-
-const linksTag = document.querySelectorAll('.tags a');
-
-for (let link of linksTag) {
-  link.addEventListener('click', tagClickHandler);
-}
-*/
+  */
 
 //usuwanie zawartości listy linków
 
@@ -81,46 +82,45 @@ for (let link of linksTag) {
 
 
 
-const optTitleSelector = '.post-title';
-let optTitleListSelector = '.titles';
-const articles = document.querySelectorAll(optArticleSelector);
+const optArticleSelector = '.post', optTitleSelector = '.post-title', optTitleListSelector = '.titles';
 
-/* remove contents of titleList */
+/* remove contents of titleList 
+const opts = {
+  tagSizes: {
+    count: 5,
+    classPrefix: 'tag-size-',
+  },
+};
+*/
 
-function generateTitleLinks() {
+const generateTitleLinks = function (customSelector = '') {
+
+  /* remove contents of titleList*/
   const titleList = document.querySelector(optTitleListSelector);
-  clearMessages();
-  /* generate links */
-  const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-  //const html = generateTitleLinksHTML();
-  /* insert links into titleList */
-  titleList.innerHTML = titleList.innerHTML + linkHTML;
-}
+  titleList.innerHTML = '';
 
-
-function clearMessages() {
-  document.getElementById('messages').innerHTML = '';
-  document.getElementById('messages').classList.remove('messages');
-
-
-}
-/* for each article */
-const optArticleSelector = document.querySelectorAll('.post.active');
-for (let optArticleSelector of optTitleSelector) {
-  optArticleSelector.classList.remove('messages');
+  /* for each article */
   let html = '';
-
-  /* get the article id */
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
   for (let article of articles) {
+
+    /* get the article id */
     const articleId = article.getAttribute('id');
+
+    /* find the title element and get the title from the title element */
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-    html += '<li><a href="#' + articleId + '">' + articleTitle + '</a></li>';
+
+    /* create HTML of the link */
+    const linkHtml = { id: articleId, title: articleTitle };
+
+
+    /* insert link into titleList */
+    //titleList.insertAdjacentHTML('beforeend', linkHtml);
+    html = html + linkHtml;
   }
-  console.log(html);
-}
-
+  titleList.innerHTML = html;
+};
 generateTitleLinks();
-
 
 
 
