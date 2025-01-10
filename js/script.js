@@ -36,11 +36,7 @@ function titleClickHandler() {
   selectedArticle.classList.add('active');
 }
 
-const links = document.querySelectorAll('.titles a');
 
-for (let link of links) {
-  link.addEventListener('click', titleClickHandler);
-}
 ////////////////////////////////////////////////////////////////
 // ta funkcję trzeba naprawić;(( - bo nie chce działać
 /*
@@ -78,49 +74,57 @@ for (let link of links) {
 
 //usuwanie zawartości listy linków
 
-//optTitleSelector = '.post-title',
+
 
 
 
 const optArticleSelector = '.post', optTitleSelector = '.post-title', optTitleListSelector = '.titles';
 
-/* remove contents of titleList 
-const opts = {
-  tagSizes: {
-    count: 5,
-    classPrefix: 'tag-size-',
-  },
-};
-*/
-
-const generateTitleLinks = function (customSelector = '') {
-
-  /* remove contents of titleList*/
+function generateTitleLinks(customSelector = '') {
   const titleList = document.querySelector(optTitleListSelector);
+
+  if (!titleList) {
+    console.error("Error: Title list element not found!", optTitleListSelector);
+    return; // Exit early if title list container not found
+  }
+
   titleList.innerHTML = '';
 
-  /* for each article */
   let html = '';
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
+
   for (let article of articles) {
-
-    /* get the article id */
     const articleId = article.getAttribute('id');
+    const articleTitleElement = article.querySelector(optTitleSelector);
 
-    /* find the title element and get the title from the title element */
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    if (!articleTitleElement) {
+      console.warn(`Warning: No title element found within article with id: ${articleId}. Skipping.`);
+      continue; // Skip to next article if the title is not found
+    }
+    const articleTitle = articleTitleElement.innerHTML;
+
 
     /* create HTML of the link */
-    const linkHtml = { id: articleId, title: articleTitle };
-
-
+    const linkHtml = `<a href="#${articleId}"><span>${articleTitle}</span></a>`;
     /* insert link into titleList */
-    //titleList.insertAdjacentHTML('beforeend', linkHtml);
+
     html = html + linkHtml;
   }
+
   titleList.innerHTML = html;
-};
+
+  const links = document.querySelectorAll('.titles a');
+
+  for (let link of links) {
+    link.addEventListener('click', titleClickHandler);
+  }
+
+}
+
+// In your main code when the script loads
 generateTitleLinks();
+
+
 
 
 
