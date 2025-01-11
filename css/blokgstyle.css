@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext");
+
+/* Variables */
+/* Global */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #444;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 22px;
+    text-transform: uppercase;
+    font-family: "Oswald", sans-serif;
+    font-weight: 600;
+}
+
+.section-title span {
+    text-transform: none;
+    font-weight: 400;
+    color: #777777;
+}
+
+/* Layout */
+.wrapper {
+    display: flex;
+    margin-left: 10px;
+}
+
+.sidebar {
+    flex: 1 0 0;
+}
+
+.posts {
+    flex: 2 0 0;
+}
+
+.sidebar,
+.posts {
+    background: #fff;
+    margin-right: 10px;
+    padding: 40px;
+    border: 1px solid #444;
+    border-radius: 5px;
+}
+
+/* Logo */
+.logo {
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-size: 104px;
+    line-height: 1;
+    color: green;
+    animation: blinker 2s cubic-bezier(.1, 0, 1, 1) infinite alternate;
+    text-align: center;
+    background: url("https://media.istockphoto.com/id/598248114/pl/zdj%C4%99cie/przyjaciele-szcz%C4%99%C5%9Bcie-si%C4%99-sala-jadalna-jedzenie-koncepcja.jpg?s=1024x1024&w=is&k=20&c=wOLPY-dwxqTqCStvma2bIdkau8npf27Og9FuYjft1ek=")
+}
+
+@keyframes blinker {
+    1% {
+        opacity: 0;
+    }
+}
+
+.logo::after {
+
+    opacity: 30%;
+}
+
+/* Lists */
+.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list .active {
+    font-weight: bold;
+}
+
+.list-horizontal li {
+    display: inline-block;
+}
+
+/* Authors */
+.authors li {
+    margin-bottom: 12px;
+}
+
+/* Post */
+.post {
+    display: none;
+}
+
+.post.active {
+    display: block;
+}
+
+.post-author {
+    font-style: italic;
+}
+
+.post-tags {
+    display: flex;
+}
+
+.post-tags p {
+    margin: 0 10px 0 0;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3Nhc3Mvc3R5bGUuc2NzcyIsInN0eWxlMS5jc3MiLCJzdHlsZS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEscUhBQVk7O0FBV1osY0FBQTtBQUVBLFdBQUE7QUNUQTs7O0lEYUEsc0JBQUE7QUNUQTs7QUFFQTtJRFdFLGdCQUFnQjtJQUNoQiwwQ0FBZTtJQUNmLFdBQUE7SUVURixnQkFBQTtJRENJLGVBQWU7SURXbkIsZ0JBQUE7QUNUQTs7QUNFQTtJRENJLGlCQUFpQjtJRFdyQixjQUFBO0FDVEE7O0FBRUE7SURXRSxlQUFnQjtJRVRsQix5QkFBQTtJRENJLGlDQUFpQztJRElyQyxnQkFBQTtBQ0ZBOztBQUVBO0lDQ0Esb0JBQUE7SURDSSxnQkFBZ0I7SURVcEIsY0FBQTtBQUVBOztBQ1JBLFdEVUU7QUVURjtJRENJLGFBQWE7SURXakIsaUJBQUE7QUNUQTs7QUFFQTtJRFdBLFdBQUE7QUNUQTs7QUFFQTtJRFdBLFdBQUE7QUNUQTs7QUFFQTs7SURZRSxnQkFBa0I7SUVUcEIsa0JBQUE7SURDSSxhQUFhO0lEV2pCLHNCQUFBO0lBRUEsa0JBQUE7QUNWQTs7QUFFQSxTRFdFO0FDVkY7SURZRSxrQ0FBa0I7SUVWcEIsZ0JBQUE7SURDSSxnQkFBZ0I7SURZcEIsY0FBQTtJQUVBLGtCQUFBO0FDWEE7O0FBRUEsVURZRTtBRVhGO0lEQ0kscUJBQXFCO0lET3pCLFNBQUE7SUFLSSxVQUFBO0FFVEo7O0FGYUE7SUFFSSxpQkFBQTtBRVhKOztBRmVBO0lBRUEscUJBQUE7QUNiQTs7QUFFQSxZQUFZO0FEaUJaO0lBRUEsbUJBQUE7QUNoQkE7O0FBRUEsU0FBUztBRGNUO0lBR0ksYUFBYztBRWRsQjs7QUZrQkE7SUFDRSxjQUFBO0FFZkY7O0FGa0JBO0lBQ0Usa0JBQWE7QUVmZjs7QUZjQTtJQUdJLGFBQUE7QUViSjs7QURFQTtJQUNJLGtCQUFrQjtBQUN0QiIsImZpbGUiOiJzdHlsZTEuY3NzIn0= */

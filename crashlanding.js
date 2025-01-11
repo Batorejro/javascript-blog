@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 function generateTitleLinks(customSelector = '') {
 
     /* remove contents of titleList*/
@@ -27,6 +28,7 @@ function generateTitleLinks(customSelector = '') {
             link.addEventListener('click', titleClickHandler);
         }
     }
+    // eslint-disable-next-line indent
     titleList.innerHTML = html;
 };
 generateTitleLinks();

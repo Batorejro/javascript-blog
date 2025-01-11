@@ -78,13 +78,13 @@ function titleClickHandler() {
 
 
 
-const optArticleSelector = '.post', optTitleSelector = '.post-title', optTitleListSelector = '.titles';
+const optArticleSelector = '.post', optTitleSelector = '.post-title', optTitleListSelector = '.titles', optArticleTagSelector = '.post-tags.list';
 
 function generateTitleLinks(customSelector = '') {
   const titleList = document.querySelector(optTitleListSelector);
 
   if (!titleList) {
-    console.error("Error: Title list element not found!", optTitleListSelector);
+    console.error('Error: Title list element not found!', optTitleListSelector);
     return; // Exit early if title list container not found
   }
 
@@ -105,7 +105,7 @@ function generateTitleLinks(customSelector = '') {
 
 
     /* create HTML of the link */
-    const linkHtml = `<a href="#${articleId}"><span>${articleTitle}</span></a>`;
+    const linkHtml = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     /* insert link into titleList */
 
     html = html + linkHtml;
@@ -124,7 +124,40 @@ function generateTitleLinks(customSelector = '') {
 // In your main code when the script loads
 generateTitleLinks();
 
+// And now function for tags generation
+
+function generateTags() {
+  /* find all articles */
+  const articles = document.querySelectorAll(optArticleTagSelector);
+
+  /* START LOOP: for every article: */
+  for (let article of articles) {
+    /* find tags wrapper */
+    const tagsWrapper = article.querySelector(optArticleTagSelector);
+
+    /* make html variable with empty string*/
+    let html = '';
+
+    /* get tags from data-tags attribute */
+    const articleTags = article.getAttribute('data-tags');
+    /* split tags into array */
+    const articleTagsArray = articleTags.split(' ');
+    /* START LOOP: for each tag */
+
+    for (let tags of articleTagsArray) {
+      /* generate HTML of the link */
+      const linkHtml1 = '<li><a href="#' + articles + '"><span>' + articleTags + '</span></a></li>';
+      /* add generated code to html variable */
 
 
+      html = html + linkHtml1;
+      /* end loop:for each tag */
+    }
+    /* insert HTML of all the links into the tags wrapper */
+    tagsWrapper.insertAdjacentHTML('beforeend', linkHtml1);
 
+    /*end loop for every article*/
+  }
+}
+generateTags();
 
